@@ -1,5 +1,5 @@
 // src/index.js
 
-import express from 'express';
+import { startServer } from './server.js';
 
-const app = express();
+startServer();

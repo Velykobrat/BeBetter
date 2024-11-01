@@ -3,8 +3,11 @@
 import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
-
 import { env } from './utils/env.js';
+
+import boardRoutes from './routers/board.js';
+import columnRoutes from './routers/column.js';
+import cardRoutes from './routers/card.js';
 
 const PORT = Number(env('PORT', '3000'));
 
@@ -21,6 +24,10 @@ export const startServer = () => {
       },
     }),
   );
+
+  app.use('/api', boardRoutes);
+  app.use('/api', columnRoutes);
+  app.use('/api', cardRoutes);
 
   app.get('/', (req, res) => {
     res.json({
